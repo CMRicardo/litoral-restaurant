@@ -14,7 +14,7 @@ import { Input } from "./ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "./ui/use-toast";
-import { ToastAction } from "./ui/toast";
+import { useRouter } from "next/navigation";
 
 const loginFormSchema = z.object({
   email: z.string().email(),
@@ -23,6 +23,7 @@ const loginFormSchema = z.object({
 
 export function LoginForm() {
   const { toast } = useToast();
+  const router = useRouter();
   const loginForm = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -34,9 +35,10 @@ export function LoginForm() {
   const handleSubmit = (data: z.infer<typeof loginFormSchema>) => {
     toast({
       title: "Login",
-      description: "Login successful",
-      duration: 2000,
+      description: "Login successful, redirecting...",
+      duration: 1500,
     });
+    router.push("/dashboard");
   };
 
   return (
