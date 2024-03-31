@@ -126,7 +126,7 @@ export function Header() {
             className="overflow-hidden rounded-full"
           >
             <Image
-              src="next.svg"
+              src="vercel.svg"
               width={36}
               height={36}
               alt="Avatar"
