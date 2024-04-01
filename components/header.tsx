@@ -67,18 +67,20 @@ export function Header() {
       </Sheet>
       <Breadcrumb className="hidden md:flex">
         <BreadcrumbList>
-          {paths.map((path, index) => (
-            <>
-              <BreadcrumbItem key={path}>
-                <BreadcrumbLink asChild>
-                  <Link href={`/${path}`} className="capitalize">
-                    {path}
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              {index !== paths.length - 1 && <BreadcrumbSeparator />}
-            </>
-          ))}
+          {paths.map((path, index) => {
+            return (
+              <div className="contents" key={path}>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link href={`/${path}`} className="capitalize">
+                      {path}
+                    </Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                {index !== paths.length - 1 && <BreadcrumbSeparator />}
+              </div>
+            );
+          })}
         </BreadcrumbList>
       </Breadcrumb>
       <div className="relative ml-auto flex-1 md:grow-0">
