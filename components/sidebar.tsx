@@ -1,47 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Tooltip, TooltipTrigger, TooltipContent } from "./ui/tooltip";
-
-import {
-  Home,
-  ShoppingCart,
-  Package,
-  Users2,
-  LineChart,
-  Settings,
-} from "lucide-react";
-
 import { usePathname } from "next/navigation";
+
 import clsx from "clsx";
 
-const links = [
-  {
-    href: "/dashboard",
-    label: "Dashboard",
-    icon: <Home />,
-  },
-  {
-    href: "/dashboard/orders",
-    label: "Orders",
-    icon: <ShoppingCart />,
-  },
-  {
-    href: "/dashboard/employees",
-    label: "Employees",
-    icon: <Users2 />,
-  },
-  {
-    href: "/dashboard/products",
-    label: "Products",
-    icon: <Package />,
-  },
-  {
-    href: "/dashboard/analytics",
-    label: "Analytics",
-    icon: <LineChart />,
-  },
-];
+import { Settings } from "lucide-react";
+
+import { Tooltip, TooltipTrigger, TooltipContent } from "./ui/tooltip";
+import { links } from "@/lib/links";
 
 export function Sidebar() {
   const pathName = usePathname();
