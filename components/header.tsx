@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { PanelLeft, Search, Settings } from "lucide-react";
+import { PanelLeft, Search, Settings, User } from "lucide-react";
 
 import {
   Breadcrumb,
@@ -32,6 +32,11 @@ import { ThemeToggle } from "./theme-toggle";
 export function Header() {
   const pathName = usePathname();
   const paths = pathName.split("/").filter((p) => p !== "");
+  let acc = "";
+  const urls = paths.map((path) => {
+    acc += `/${path}`;
+    return acc;
+  });
 
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
@@ -73,7 +78,7 @@ export function Header() {
               <div className="contents" key={path}>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href={`/${path}`} className="capitalize">
+                    <Link href={urls[index]} className="capitalize">
                       {path}
                     </Link>
                   </BreadcrumbLink>
@@ -100,19 +105,15 @@ export function Header() {
             size="icon"
             className="overflow-hidden rounded-full"
           >
-            <Image
-              src="/vercel.svg"
-              width={36}
-              height={36}
-              alt="Avatar"
-              className="overflow-hidden"
-            />
+            <User height={32} width={32} className="overflow-hidden" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href="/dashboard/settings">Settings</Link>
+          </DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Logout</DropdownMenuItem>
