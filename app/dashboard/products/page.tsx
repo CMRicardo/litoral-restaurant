@@ -116,7 +116,7 @@ export default function Products() {
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src="https://ui.shadcn.com/placeholder.svg"
                         width="64"
                       />
                     </TableCell>
@@ -157,7 +157,7 @@ export default function Products() {
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src="https://ui.shadcn.com/placeholder.svg"
                         width="64"
                       />
                     </TableCell>
@@ -198,7 +198,7 @@ export default function Products() {
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src="https://ui.shadcn.com/placeholder.svg"
                         width="64"
                       />
                     </TableCell>
@@ -239,7 +239,7 @@ export default function Products() {
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src="https://ui.shadcn.com/placeholder.svg"
                         width="64"
                       />
                     </TableCell>
@@ -280,7 +280,7 @@ export default function Products() {
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src="https://ui.shadcn.com/placeholder.svg"
                         width="64"
                       />
                     </TableCell>
@@ -321,7 +321,7 @@ export default function Products() {
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src="https://ui.shadcn.com/placeholder.svg"
                         width="64"
                       />
                     </TableCell>
