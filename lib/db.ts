@@ -1,6 +1,7 @@
 import { createClient } from "@libsql/client";
 
-const client = createClient({
+export const db = createClient({
   url: process.env.TURSO_DB_URL ?? "",
   authToken: process.env.TURSO_DB_TOKEN ?? "",
+  intMode: "number",
 });

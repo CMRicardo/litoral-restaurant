@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Lobster Bisque",
+    "category": "Main dishes",
+    "price": "29.99",
+    "description": "Creamy soup made from fresh lobster"
+  },
+  {
+    "name": "Filet Mignon",
+    "category": "Main dishes",
+    "price": "39.99",
+    "description": "Tender cut of beef cooked to perfection"
+  },
+  {
+    "name": "Crème Brûlée",
+    "category": "Desserts",
+    "price": "12.99",
+    "description": "Rich custard topped with caramelized sugar"
+  },
+  {
+    "name": "Caesar Salad",
+    "category": "Entries",
+    "price": "15.99",
+    "description": "Classic salad with romaine lettuce and Caesar dressing"
+  },
+  {
+    "name": "Chardonnay",
+    "category": "Drinks",
+    "price": "9.99",
+    "description": "Crisp white wine with notes of citrus"
+  },
+  {
+    "name": "Tiramisu",
+    "category": "Desserts",
+    "price": "14.99",
+    "description": "Layers of sponge cake soaked in coffee and mascarpone cream"
+  },
+  {
+    "name": "Grilled Salmon",
+    "category": "Main dishes",
+    "price": "32.99",
+    "description": "Fresh salmon fillet grilled to perfection"
+  },
+  {
+    "name": "Mojito",
+    "category": "Drinks",
+    "price": "11.99",
+    "description": "Refreshing cocktail with rum, lime, and mint"
+  },
+  {
+    "name": "Caprese Salad",
+    "category": "Entries",
+    "price": "16.99",
+    "description": "Fresh salad with tomatoes, mozzarella, and basil"
+  },
+  {
+    "name": "Chocolate Lava Cake",
+    "category": "Desserts",
+    "price": "13.99",
+    "description": "Warm chocolate cake with a gooey chocolate center"
+  }
+]
