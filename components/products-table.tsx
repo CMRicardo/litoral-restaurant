@@ -1,4 +1,5 @@
 import { getProducts } from "@/lib/products/get-products";
+
 import {
   Card,
   CardContent,
@@ -16,9 +17,7 @@ export default async function ProductsTable() {
     <Card>
       <CardHeader>
         <CardTitle>Products</CardTitle>
-        <CardDescription>
-          Manage your products and view their sales performance.
-        </CardDescription>
+        <CardDescription>Manage your products</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>

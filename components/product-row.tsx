@@ -14,6 +14,7 @@ import { TableRow, TableCell } from "./ui/table";
 import { Badge } from "./ui/badge";
 
 import { Product } from "@/interfaces/product.interface";
+import Link from "next/link";
 
 export default function ProductRow({
   name,
@@ -22,15 +23,16 @@ export default function ProductRow({
   category,
   createdAt,
   active,
+  id,
 }: Product) {
   return (
     <TableRow>
       <TableCell className="hidden sm:table-cell">
         <Image
-          alt="Product image"
+          alt={`Image of ${name}`}
           className="aspect-square rounded-md object-cover"
           height="64"
-          src="https://ui.shadcn.com/placeholder.svg"
+          src="/placeholder.svg"
           width="64"
         />
       </TableCell>
@@ -40,7 +42,7 @@ export default function ProductRow({
         {active ? (
           <Badge variant="default">Active</Badge>
         ) : (
-          <Badge variant="outline">Draft</Badge>
+          <Badge variant="outline">Archived</Badge>
         )}
       </TableCell>
       <TableCell>${price}</TableCell>
@@ -58,7 +60,9 @@ export default function ProductRow({
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <Link href={`/dashboard/products/edit/${id}`}>
+              <DropdownMenuItem>Edit</DropdownMenuItem>
+            </Link>
             <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

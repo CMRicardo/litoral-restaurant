@@ -20,7 +20,7 @@ export const getProducts = async (): Promise<{
   FROM
     Products as prod
     join Categories as cat on prod.categoryId = cat.id
-    ORDER BY prod.id
+    ORDER BY cat.name
     LIMIT 10;`,
     args: [],
   });
