@@ -37,6 +37,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 import { getProductById } from "@/lib/products/get-product-by-id";
 import { getCategories } from "@/lib/categories/get-categories";
+import { ProductImage } from "@/components/product-image";
 
 export default async function EditProductPage({
   params,
@@ -188,31 +189,7 @@ export default async function EditProductPage({
               </div>
             </CardContent>
           </Card>
-          <Card className="overflow-hidden">
-            <CardHeader>
-              <CardTitle>Product Images</CardTitle>
-              <CardDescription>
-                Pick a nice image for your product
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-2">
-                <Image
-                  alt="Product image"
-                  className="aspect-square w-full rounded-md object-cover"
-                  height="300"
-                  src="/placeholder.svg"
-                  width="300"
-                />
-                <div className="grid place-items-center px-16">
-                  <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-                    <Upload className="h-4 w-4 text-muted-foreground" />
-                    <span className="sr-only">Upload</span>
-                  </button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <ProductImage />
           <Card>
             <CardHeader>
               <CardTitle>Archive Product</CardTitle>
