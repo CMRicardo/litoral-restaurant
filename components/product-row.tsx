@@ -37,7 +37,9 @@ export default function ProductRow({
         />
       </TableCell>
       <TableCell className="font-medium">{name}</TableCell>
-      <TableCell className="font-medium">{description}</TableCell>
+      <TableCell className="hidden font-medium sm:table-cell">
+        {description}
+      </TableCell>
       <TableCell>
         {active ? (
           <Badge variant="default">Active</Badge>

@@ -27,7 +27,9 @@ export default async function ProductsTable() {
                 <span className="sr-only">Image</span>
               </TableHead>
               <TableHead>Name</TableHead>
-              <TableHead>Description</TableHead>
+              <TableHead className="hidden md:table-cell">
+                Description
+              </TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Price</TableHead>
               <TableHead className="hidden md:table-cell">Category</TableHead>
