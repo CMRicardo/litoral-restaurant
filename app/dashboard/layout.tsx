@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
-import { Main } from "@/components/Main";
+import { Main } from "@/components/main";
 
 export const metadata: Metadata = {
   title: "Dashboard | Litoral Restaurant",
