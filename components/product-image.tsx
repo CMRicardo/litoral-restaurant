@@ -1,7 +1,9 @@
 "use client";
 
-import { Upload } from "lucide-react";
 import Image from "next/image";
+import { Upload } from "lucide-react";
+
+import { useState } from "react";
 
 import {
   Card,
@@ -10,11 +12,13 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { UploadButton } from "./upload-thing";
+import { UploadButton, UploadDropzone } from "./upload-thing";
+import { Product } from "@/interfaces/product.interface";
+import { DropzoneUpload } from "./dropzone-upload";
 
-export const ProductImage = () => {
+export const ProductImage = (product: Product) => {
   return (
-    <Card className="overflow-hidden">
+    <Card className="max-w-full overflow-hidden">
       <CardHeader>
         <CardTitle>Product Image</CardTitle>
         <CardDescription>Pick a nice image for your product</CardDescription>
@@ -22,29 +26,25 @@ export const ProductImage = () => {
       <CardContent>
         <div className="grid gap-2">
           <Image
-            alt="Product image"
+            alt={`Image of ${product.name}`}
             className="aspect-square w-full rounded-md object-cover"
             height="300"
-            src="/placeholder.svg"
             width="300"
+            src={product.pictureUrl || "/placeholder.svg"}
           />
-          <div className="grid place-items-center px-16">
-            <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-              <Upload className="h-4 w-4 text-muted-foreground" />
-              <span className="sr-only">Upload</span>
-            </button>
-            <UploadButton
+          <div className="grid place-items-center">
+            <DropzoneUpload />
+            {/* <UploadDropzone
+              className="flex aspect-square max-w-full items-center justify-center rounded-md border border-dashed border-slate-300"
               endpoint="imageUploader"
               onClientUploadComplete={(res) => {
-                // Do something with the response
                 console.log("Files: ", res);
                 alert("Upload Completed");
               }}
               onUploadError={(error: Error) => {
-                // Do something with the error.
                 alert(`ERROR! ${error.message}`);
               }}
-            />
+            /> */}
           </div>
         </div>
       </CardContent>

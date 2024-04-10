@@ -16,7 +16,8 @@ export const getProducts = async (): Promise<{
     cat.name as 'category',
     prod.createdAt,
     prod.updatedAt,
-    prod.updatedBy
+    prod.updatedBy,
+    prod.pictureUrl
   FROM
     Products as prod
     join Categories as cat on prod.categoryId = cat.id
@@ -30,6 +31,8 @@ export const getProducts = async (): Promise<{
   );
   const totalProducts = Number(countResult[0]["count (*)"]);
   const products = productsResult as unknown as Product[];
+  console.log(products);
+
   return {
     products,
     total: totalProducts,

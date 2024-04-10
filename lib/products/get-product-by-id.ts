@@ -12,7 +12,8 @@ export const getProductById = async (id: number) => {
     cat.name as 'category',
     prod.createdAt,
     prod.updatedAt,
-    prod.updatedBy
+    prod.updatedBy,
+    prod.pictureUrl
   FROM
     Products as prod
     join Categories as cat on prod.categoryId = cat.id

@@ -9,6 +9,7 @@ import { Settings } from "lucide-react";
 
 import { Tooltip, TooltipTrigger, TooltipContent } from "./ui/tooltip";
 import { links } from "@/lib/links";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Sidebar() {
   const pathName = usePathname();
@@ -38,6 +39,7 @@ export function Sidebar() {
         })}
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-4">
+        <ThemeToggle />
         <Tooltip>
           <TooltipTrigger asChild>
             <Link

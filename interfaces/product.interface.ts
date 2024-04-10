@@ -8,4 +8,5 @@ export interface Product {
   updatedAt: Date;
   updatedBy: number;
   active: boolean;
+  pictureUrl?: string;
 }

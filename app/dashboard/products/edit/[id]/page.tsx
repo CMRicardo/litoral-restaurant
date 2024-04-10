@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, PlusCircle, Upload } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 
@@ -24,16 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 import { getProductById } from "@/lib/products/get-product-by-id";
 import { getCategories } from "@/lib/categories/get-categories";
@@ -46,6 +36,7 @@ export default async function EditProductPage({
 }) {
   const { id } = params;
 
+  const product = await getProductById(Number(id));
   const {
     name,
     description,
@@ -55,7 +46,8 @@ export default async function EditProductPage({
     createdAt,
     updatedAt,
     updatedBy,
-  } = await getProductById(Number(id));
+  } = product;
+
   const categories = await getCategories();
 
   const status = active ? "Active" : "Archived";
@@ -74,7 +66,7 @@ export default async function EditProductPage({
           {name}
         </h1>
         <Badge variant="outline" className="ml-auto sm:ml-0">
-          In stock
+          {status}
         </Badge>
         <div className="hidden items-center gap-2 md:ml-auto md:flex">
           <Button variant="outline" size="sm">
@@ -116,10 +108,13 @@ export default async function EditProductPage({
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Product Category</CardTitle>
+              <CardTitle>Product Info</CardTitle>
+              <CardDescription>
+                What category is this product in?
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-6 sm:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-2">
                 <div className="grid gap-3">
                   <Label htmlFor="category">Category</Label>
                   <Select>
@@ -141,32 +136,6 @@ export default async function EditProductPage({
                     </SelectContent>
                   </Select>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Stock</CardTitle>
-              <CardDescription>
-                Lipsum dolor sit amet, consectetur adipiscing elit
-              </CardDescription>
-            </CardHeader>
-            <CardContent></CardContent>
-            <CardFooter className="justify-center border-t p-4">
-              <Button size="sm" variant="ghost" className="gap-1">
-                <PlusCircle className="h-3.5 w-3.5" />
-                Add Variant
-              </Button>
-            </CardFooter>
-          </Card>
-        </div>
-        <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>Product Status</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-6">
                 <div className="grid gap-3">
                   <Label htmlFor="status">Status</Label>
                   <Select>
@@ -189,7 +158,23 @@ export default async function EditProductPage({
               </div>
             </CardContent>
           </Card>
-          <ProductImage />
+        </div>
+        <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Price</CardTitle>
+              <CardDescription>Edit the price of the product</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-6">
+                <Label className="sr-only" htmlFor="price">
+                  Price
+                </Label>
+                <Input id="price" type="number" defaultValue={price} />
+              </div>
+            </CardContent>
+          </Card>
+          <ProductImage {...product} />
           <Card>
             <CardHeader>
               <CardTitle>Archive Product</CardTitle>
@@ -198,7 +183,6 @@ export default async function EditProductPage({
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div></div>
               <Button size="sm" variant="destructive">
                 Archive Product
               </Button>

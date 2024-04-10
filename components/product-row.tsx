@@ -24,6 +24,7 @@ export default function ProductRow({
   createdAt,
   active,
   id,
+  pictureUrl,
 }: Product) {
   return (
     <TableRow>
@@ -32,7 +33,7 @@ export default function ProductRow({
           alt={`Image of ${name}`}
           className="aspect-square rounded-md object-cover"
           height="64"
-          src="/placeholder.svg"
+          src={pictureUrl || "/placeholder.svg"}
           width="64"
         />
       </TableCell>

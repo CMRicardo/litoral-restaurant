@@ -1,6 +1,8 @@
 "use client";
-import Image from "next/image";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import { PanelLeft, Search, Settings, User } from "lucide-react";
 
 import {
@@ -25,9 +27,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
 import { links } from "@/lib/links";
-import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   const pathName = usePathname();
@@ -97,7 +97,7 @@ export function Header() {
           className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
         />
       </div>
-      <ThemeToggle />
+
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
