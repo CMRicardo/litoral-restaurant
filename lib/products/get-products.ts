@@ -31,7 +31,6 @@ export const getProducts = async (): Promise<{
   );
   const totalProducts = Number(countResult[0]["count (*)"]);
   const products = productsResult as unknown as Product[];
-  console.log(products);
 
   return {
     products,

@@ -28,6 +28,7 @@ import { Input } from "@/components/ui/input";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { links } from "@/lib/links";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   const pathName = usePathname();
@@ -62,12 +63,13 @@ export function Header() {
               );
             })}
             <Link
-              href="#"
+              href="/dashboard/settings"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <Settings className="h-5 w-5" />
               Settings
             </Link>
+            <ThemeToggle />
           </nav>
         </SheetContent>
       </Sheet>
@@ -78,7 +80,10 @@ export function Header() {
               <div className="contents" key={path}>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href={urls[index]} className="capitalize">
+                    <Link
+                      href={urls[index].includes("edit") ? "" : urls[index]}
+                      className="capitalize"
+                    >
                       {path}
                     </Link>
                   </BreadcrumbLink>
