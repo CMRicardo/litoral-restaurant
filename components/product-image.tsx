@@ -34,17 +34,6 @@ export const ProductImage = (product: Product) => {
           />
           <div className="grid place-items-center">
             <DropzoneUpload />
-            {/* <UploadDropzone
-              className="flex aspect-square max-w-full items-center justify-center rounded-md border border-dashed border-slate-300"
-              endpoint="imageUploader"
-              onClientUploadComplete={(res) => {
-                console.log("Files: ", res);
-                alert("Upload Completed");
-              }}
-              onUploadError={(error: Error) => {
-                alert(`ERROR! ${error.message}`);
-              }}
-            /> */}
           </div>
         </div>
       </CardContent>
