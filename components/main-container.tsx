@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
+import { CommandMenu } from "./command-menu";
 
 export function Main({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -12,5 +13,10 @@ export function Main({ children }: { children: React.ReactNode }) {
     !needTreeCols && "lg:grid-cols-3 xl:grid-cols-3",
   ]);
 
-  return <main className={classes}>{children}</main>;
+  return (
+    <main className={classes}>
+      <CommandMenu />
+      {children}
+    </main>
+  );
 }

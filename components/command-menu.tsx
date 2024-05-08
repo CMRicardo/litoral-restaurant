@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
@@ -12,9 +12,10 @@ import {
 } from "./ui/command";
 import { Laptop, LogOut, Moon, PackagePlus, Settings, Sun } from "lucide-react";
 import { links } from "@/lib/links";
+import { CommandBarContext } from "@/context/command-bar";
 
 export function CommandMenu() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useContext(CommandBarContext);
   const router = useRouter();
   const { setTheme } = useTheme();
   const runCommand = (command: () => void) => {

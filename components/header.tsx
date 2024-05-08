@@ -26,8 +26,11 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { links } from "@/lib/links";
 import { ThemeToggle } from "./theme-toggle";
+import { CommandBarContext } from "@/context/command-bar";
+import { useContext } from "react";
 
 export function Header() {
+  const [, setOpen] = useContext(CommandBarContext);
   const pathName = usePathname();
   const paths = pathName.split("/").filter((p) => p !== "");
   let acc = "";
@@ -91,7 +94,13 @@ export function Header() {
           })}
         </BreadcrumbList>
       </Breadcrumb>
-      <Button className="relative ml-auto flex-1 md:grow-0" variant={"outline"}>
+      <Button
+        className="relative ml-auto flex-1 md:grow-0"
+        variant={"outline"}
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <div className="w-full rounded-lg pl-4 text-left shadow-none md:w-[200px] lg:w-[320px]">
           <span>Search...</span>
