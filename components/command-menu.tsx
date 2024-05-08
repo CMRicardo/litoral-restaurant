@@ -67,7 +67,7 @@ export function CommandMenu() {
           <CommandItem
             className="flex gap-2 text-muted-foreground"
             onSelect={() =>
-              runCommand(() => router.push("/dashboard/products/add"))
+              runCommand(() => router.push("/dashboard/products/new"))
             }
           >
             <PackagePlus />

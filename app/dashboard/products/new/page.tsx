@@ -37,33 +37,13 @@ import {
 
 import { Textarea } from "@/components/ui/textarea";
 
-import { getProductById } from "@/lib/products/get-product-by-id";
 import { getCategories } from "@/lib/categories/get-categories";
 import { ProductImage } from "@/components/product-image";
 
-export default async function EditProductPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const { id } = params;
-
-  const product = await getProductById(Number(id));
-  const {
-    name,
-    description,
-    price,
-    active,
-    category,
-    createdAt,
-    updatedAt,
-    updatedBy,
-  } = product;
-
+export default async function NewProductPage() {
   const categories = await getCategories();
 
-  const status = active ? "Active" : "Archived";
-  const POSSIBLE_STATUSES = ["Active", "Archived"];
+  const POSSIBLE_STATUSES = ["Active", "Inactive"];
 
   return (
     <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
@@ -75,10 +55,10 @@ export default async function EditProductPage({
           </Button>
         </Link>
         <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-          {name}
+          New Product
         </h1>
         <Badge variant="outline" className="ml-auto sm:ml-0">
-          {status}
+          {POSSIBLE_STATUSES[1]}
         </Badge>
         <div className="hidden items-center gap-2 md:ml-auto md:flex">
           <Button variant="outline" size="sm">
@@ -92,28 +72,17 @@ export default async function EditProductPage({
           <Card>
             <CardHeader>
               <CardTitle>Product Details</CardTitle>
-              <CardDescription>
-                Edit details of the {name} product
-              </CardDescription>
+              <CardDescription>Edit details of the product</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid gap-6">
                 <div className="grid gap-3">
                   <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    className="w-full"
-                    defaultValue={name}
-                  />
+                  <Input id="name" type="text" className="w-full" />
                 </div>
                 <div className="grid gap-3">
                   <Label htmlFor="description">Description</Label>
-                  <Textarea
-                    id="description"
-                    defaultValue={description}
-                    className="min-h-32"
-                  />
+                  <Textarea id="description" className="min-h-32" />
                 </div>
               </div>
             </CardContent>
@@ -131,10 +100,7 @@ export default async function EditProductPage({
                   <Label htmlFor="category">Category</Label>
                   <Select>
                     <SelectTrigger id="category" aria-label="Select category">
-                      <SelectValue
-                        placeholder={category}
-                        defaultValue={category}
-                      />
+                      <SelectValue placeholder={"Select a category"} />
                     </SelectTrigger>
                     <SelectContent>
                       {categories.map((category) => (
@@ -152,7 +118,7 @@ export default async function EditProductPage({
                   <Label htmlFor="status">Status</Label>
                   <Select>
                     <SelectTrigger id="status" aria-label="Select status">
-                      <SelectValue placeholder={status} />
+                      <SelectValue placeholder={POSSIBLE_STATUSES[1]} />
                     </SelectTrigger>
                     <SelectContent>
                       {POSSIBLE_STATUSES.map((status) => (
@@ -182,11 +148,11 @@ export default async function EditProductPage({
                 <Label className="sr-only" htmlFor="price">
                   Price
                 </Label>
-                <Input id="price" type="number" defaultValue={price} />
+                <Input id="price" type="number" />
               </div>
             </CardContent>
           </Card>
-          <ProductImage product={product} />
+          <ProductImage />
           <Card>
             <CardHeader>
               <CardTitle>Archive Product</CardTitle>
@@ -207,8 +173,8 @@ export default async function EditProductPage({
                       Are you absolutely sure?
                     </AlertDialogTitle>
                     <AlertDialogDescription>
-                      This action cannot be undone. This will remove{" "}
-                      <strong>{name}</strong> from the menu.
+                      This action cannot be undone. This will remove this
+                      product from the menu.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
