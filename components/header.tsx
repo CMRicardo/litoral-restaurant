@@ -3,28 +3,25 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Command, PanelLeft, Search, Settings, User } from "lucide-react";
+import { PanelLeft, Search, Settings, User } from "lucide-react";
 
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { links } from "@/lib/links";
@@ -96,13 +93,11 @@ export function Header() {
       </Breadcrumb>
       <Button className="relative ml-auto flex-1 md:grow-0" variant={"outline"}>
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          type="search"
-          placeholder="Search..."
-          className="pointer-events-none w-full rounded-lg border-0 pl-8 shadow-none md:w-[200px] lg:w-[320px]"
-        />
-        <div className="">
-          <Command className="absolute right-2.5 top-2.5 flex h-4 w-4 gap-1" />
+        <div className="w-full rounded-lg pl-4 text-left shadow-none md:w-[200px] lg:w-[320px]">
+          <span>Search...</span>
+        </div>
+        <div className="absolute right-2.5 top-1.5">
+          <kbd>cmd</kbd>+<kbd>k</kbd>
         </div>
       </Button>
 
