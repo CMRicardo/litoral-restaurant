@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { PanelLeft, Search, Settings, User } from "lucide-react";
+import { Command, PanelLeft, Search, Settings, User } from "lucide-react";
 
 import {
   Breadcrumb,
@@ -94,14 +94,17 @@ export function Header() {
           })}
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="relative ml-auto flex-1 md:grow-0">
+      <Button className="relative ml-auto flex-1 md:grow-0" variant={"outline"}>
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
           type="search"
           placeholder="Search..."
-          className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+          className="pointer-events-none w-full rounded-lg border-0 pl-8 shadow-none md:w-[200px] lg:w-[320px]"
         />
-      </div>
+        <div className="">
+          <Command className="absolute right-2.5 top-2.5 flex h-4 w-4 gap-1" />
+        </div>
+      </Button>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
