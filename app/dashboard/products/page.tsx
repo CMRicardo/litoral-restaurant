@@ -1,18 +1,7 @@
-import Image from "next/image";
-
 import { File, ListFilter, MoreHorizontal, PlusCircle } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
-
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -23,14 +12,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductsTable from "@/components/products-table";
 
@@ -42,10 +23,7 @@ export default function Products() {
           <TabsList>
             <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="active">Active</TabsTrigger>
-            <TabsTrigger value="draft">Draft</TabsTrigger>
-            <TabsTrigger value="archived" className="hidden sm:flex">
-              Archived
-            </TabsTrigger>
+            <TabsTrigger value="inactive">Inactive</TabsTrigger>
           </TabsList>
           <div className="ml-auto flex items-center gap-2">
             <DropdownMenu>
@@ -83,6 +61,12 @@ export default function Products() {
         </div>
         <TabsContent value="all">
           <ProductsTable />
+        </TabsContent>
+        <TabsContent value="active">
+          <ProductsTable status="active" />
+        </TabsContent>
+        <TabsContent value="inactive">
+          <ProductsTable status="inactive" />
         </TabsContent>
       </Tabs>
     </div>

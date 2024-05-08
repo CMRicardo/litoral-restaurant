@@ -207,8 +207,8 @@ export default async function EditProductPage({
                       Are you absolutely sure?
                     </AlertDialogTitle>
                     <AlertDialogDescription>
-                      This action cannot be undone. This will remove this
-                      product from the menu.
+                      This action cannot be undone. This will remove{" "}
+                      <strong>{name}</strong> from the menu.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
