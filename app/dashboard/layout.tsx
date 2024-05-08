@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
-import { Main } from "@/components/main";
+import { Main } from "@/components/main-container";
 import { CommandMenu } from "@/components/command-menu";
 
 export const metadata: Metadata = {
