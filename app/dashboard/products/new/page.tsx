@@ -153,38 +153,6 @@ export default async function NewProductPage() {
             </CardContent>
           </Card>
           <ProductImage />
-          <Card>
-            <CardHeader>
-              <CardTitle>Archive Product</CardTitle>
-              <CardDescription>
-                Archiving a product removes it from the menu and the dashboard
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <AlertDialog>
-                <AlertDialogTrigger>
-                  <Button size="sm" variant="destructive">
-                    Archive Product
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>
-                      Are you absolutely sure?
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be undone. This will remove this
-                      product from the menu.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Continue</AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </CardContent>
-          </Card>
         </div>
       </div>
       <div className="flex items-center justify-center gap-2 md:hidden">

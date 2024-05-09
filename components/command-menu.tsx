@@ -9,6 +9,7 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandItem,
+  CommandShortcut,
 } from "./ui/command";
 import { Laptop, LogOut, Moon, PackagePlus, Settings, Sun } from "lucide-react";
 import { links } from "@/lib/links";
@@ -32,7 +33,7 @@ export function CommandMenu() {
     };
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [setOpen]);
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
@@ -44,17 +45,18 @@ export function CommandMenu() {
             return (
               <CommandItem
                 key={link.href}
-                className="flex gap-2 text-muted-foreground"
+                className="flex gap-2"
                 onSelect={() => runCommand(() => router.push(link.href))}
                 keywords={link.keywords}
               >
                 {link.icon}
                 {link.label}
+                <CommandShortcut>{link.shortcut}</CommandShortcut>
               </CommandItem>
             );
           })}
           <CommandItem
-            className="flex gap-2 text-muted-foreground"
+            className="flex gap-2"
             onSelect={() =>
               runCommand(() => router.push("/dashboard/settings"))
             }
@@ -62,11 +64,12 @@ export function CommandMenu() {
           >
             <Settings />
             Settings
+            <CommandShortcut>cmd+shift+,</CommandShortcut>
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Products">
           <CommandItem
-            className="flex gap-2 text-muted-foreground"
+            className="flex gap-2"
             onSelect={() =>
               runCommand(() => router.push("/dashboard/products/new"))
             }
@@ -77,7 +80,7 @@ export function CommandMenu() {
         </CommandGroup>
         <CommandGroup heading="Session">
           <CommandItem
-            className="flex gap-2 text-muted-foreground"
+            className="flex gap-2"
             onSelect={() => runCommand(() => router.push("/"))}
           >
             <LogOut />
@@ -86,21 +89,21 @@ export function CommandMenu() {
         </CommandGroup>
         <CommandGroup heading="Theme">
           <CommandItem
-            className="flex gap-2 text-muted-foreground"
+            className="flex gap-2"
             onSelect={() => runCommand(() => setTheme("dark"))}
           >
             <Moon />
             Set dark theme
           </CommandItem>
           <CommandItem
-            className="flex gap-2 text-muted-foreground"
+            className="flex gap-2"
             onSelect={() => runCommand(() => setTheme("light"))}
           >
             <Sun />
-            Set ligh theme
+            Set light theme
           </CommandItem>
           <CommandItem
-            className="flex gap-2 text-muted-foreground"
+            className="flex gap-2"
             onSelect={() => runCommand(() => setTheme("system"))}
           >
             <Laptop />
