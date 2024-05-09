@@ -16,6 +16,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { OrderDetails } from "@/components/order-details";
 import OrdersTable from "@/components/orders-table";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Orders | Litoral Restaurant",
+  description: "Developed by CMRicardo",
+};
 
 export default function Orders() {
   return (

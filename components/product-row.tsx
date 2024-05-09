@@ -45,7 +45,7 @@ export default function ProductRow({
         {active ? (
           <Badge variant="default">Active</Badge>
         ) : (
-          <Badge variant="outline">Archived</Badge>
+          <Badge variant="outline">Inactive</Badge>
         )}
       </TableCell>
       <TableCell>${price}</TableCell>

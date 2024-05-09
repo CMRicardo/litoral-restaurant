@@ -40,6 +40,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { getProductById } from "@/lib/products/get-product-by-id";
 import { getCategories } from "@/lib/categories/get-categories";
 import { ProductImage } from "@/components/product-image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Edit a product | Litoral Restaurant",
+  description: "Developed by CMRicardo",
+};
 
 export default async function EditProductPage({
   params,
@@ -62,8 +68,8 @@ export default async function EditProductPage({
 
   const categories = await getCategories();
 
-  const status = active ? "Active" : "Archived";
-  const POSSIBLE_STATUSES = ["Active", "Archived"];
+  const status = active ? "Active" : "Inactive";
+  const POSSIBLE_STATUSES = ["Active", "Inactive"];
 
   return (
     <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">

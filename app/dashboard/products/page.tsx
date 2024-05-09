@@ -14,6 +14,12 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductsTable from "@/components/products-table";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Products | Litoral Restaurant",
+  description: "Developed by CMRicardo",
+};
 
 export default function Products() {
   return (
@@ -41,8 +47,7 @@ export default function Products() {
                 <DropdownMenuCheckboxItem checked>
                   Active
                 </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem>Draft</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem>Archived</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem>Inactive</DropdownMenuCheckboxItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <Button size="sm" variant="outline" className="h-7 gap-1">
