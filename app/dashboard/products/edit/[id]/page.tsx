@@ -83,7 +83,10 @@ export default async function EditProductPage({
         <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
           {name}
         </h1>
-        <Badge variant="outline" className="ml-auto sm:ml-0">
+        <Badge
+          variant={status === "Inactive" ? "outline" : "default"}
+          className="ml-auto sm:ml-0"
+        >
           {status}
         </Badge>
         <div className="hidden items-center gap-2 md:ml-auto md:flex">
