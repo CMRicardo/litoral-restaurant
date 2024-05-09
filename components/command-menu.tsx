@@ -73,6 +73,7 @@ export function CommandMenu() {
             onSelect={() =>
               runCommand(() => router.push("/dashboard/products/new"))
             }
+            keywords={["Add", "Create", "New", "Product"]}
           >
             <PackagePlus />
             Add Product
