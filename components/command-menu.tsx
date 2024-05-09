@@ -124,6 +124,7 @@ export function CommandMenu() {
           <CommandItem
             className="flex gap-2"
             onSelect={() => runCommand(() => setTheme("dark"))}
+            keywords={["Dark mode", "Night mode", "Dark theme", "Moon"]}
           >
             <Moon />
             Set dark theme
@@ -131,6 +132,7 @@ export function CommandMenu() {
           <CommandItem
             className="flex gap-2"
             onSelect={() => runCommand(() => setTheme("light"))}
+            keywords={["Light mode", "Day mode", "Light theme", "Sun"]}
           >
             <Sun />
             Set light theme
@@ -138,6 +140,7 @@ export function CommandMenu() {
           <CommandItem
             className="flex gap-2"
             onSelect={() => runCommand(() => setTheme("system"))}
+            keywords={["System theme", "Auto theme", "Auto detect"]}
           >
             <Laptop />
             Set theme same as system
