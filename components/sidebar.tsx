@@ -17,7 +17,7 @@ export function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
       <nav className="flex flex-col items-center gap-4 px-2 text-muted-foreground sm:py-4">
-        {links.map(({ href, label, icon }) => {
+        {links.map(({ href, label, icon, shortcut }) => {
           const isActive = href === pathName;
           const classes = clsx(
             [
@@ -33,7 +33,9 @@ export function Sidebar() {
                   <span className="sr-only">{label}</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">{label}</TooltipContent>
+              <TooltipContent side="right" className="z-[9999]">
+                {label} <kbd>{shortcut}</kbd>
+              </TooltipContent>
             </Tooltip>
           );
         })}
@@ -50,7 +52,9 @@ export function Sidebar() {
               <span className="sr-only">Settings</span>
             </Link>
           </TooltipTrigger>
-          <TooltipContent side="right">Settings</TooltipContent>
+          <TooltipContent side="right">
+            Settings <kbd>cmd+,</kbd>
+          </TooltipContent>
         </Tooltip>
       </nav>
     </aside>

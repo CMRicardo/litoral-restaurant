@@ -73,7 +73,7 @@ export function Header() {
           </nav>
         </SheetContent>
       </Sheet>
-      <Breadcrumb className="hidden md:flex">
+      <Breadcrumb className="z-10 hidden md:flex">
         <BreadcrumbList>
           {paths.map((path, index) => {
             return (
