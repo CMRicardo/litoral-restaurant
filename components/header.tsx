@@ -106,7 +106,7 @@ export function Header() {
           <span>Search...</span>
         </div>
         <div className="absolute right-2.5 top-1.5">
-          <kbd>cmd</kbd>+<kbd>k</kbd>
+          <kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>k</kbd>
         </div>
       </Button>
 

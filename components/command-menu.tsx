@@ -26,14 +26,46 @@ export function CommandMenu() {
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if (
+        (e.metaKey || e.ctrlKey) &&
+        e.shiftKey &&
+        (e.key === "k" || e.key === "K")
+      ) {
         e.preventDefault();
         setOpen((open) => !open);
+      }
+      if (e.key === "d" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/dashboard");
+      }
+      if (e.key === "a" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/dashboard/analytics");
+      }
+      if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/dashboard/products");
+      }
+      if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/dashboard/products");
+      }
+      if (e.key === "e" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/dashboard/employees");
+      }
+      if (e.key === "," && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/dashboard/settings");
+      }
+      if (e.key === "o" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/dashboard/orders");
       }
     };
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, [setOpen]);
+  }, [setOpen, router]);
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
@@ -64,7 +96,7 @@ export function CommandMenu() {
           >
             <Settings />
             Settings
-            <CommandShortcut>cmd+shift+,</CommandShortcut>
+            <CommandShortcut>cmd+,</CommandShortcut>
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Products">
