@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import { Header } from "@/components/header";
+import { Toaster } from "@/components/ui/toaster";
 import { Sidebar } from "@/components/sidebar";
 import { Main } from "@/components/main-container";
 import { CommandBarProvider } from "@/context/command-bar";
@@ -25,6 +26,7 @@ export default function DashboardLayout({
           </div>
         </>
       </CommandBarProvider>
+      <Toaster />
     </div>
   );
 }

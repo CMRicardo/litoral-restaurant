@@ -1,9 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Upload } from "lucide-react";
-
-import { useState } from "react";
 
 import {
   Card,
@@ -34,6 +31,7 @@ export const ProductImage = ({
             className="aspect-square w-full rounded-md object-cover"
             height="300"
             width="300"
+            priority={true}
             src={product?.pictureUrl || "/placeholder.svg"}
           />
           <div className="grid place-items-center">
