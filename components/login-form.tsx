@@ -8,6 +8,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "./ui/use-toast";
 import { useRouter } from "next/navigation";
+import { z } from "zod";
+import { Form, FormField, FormItem } from "./ui/form";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export function LoginForm() {
   const router = useRouter();
@@ -19,14 +23,28 @@ export function LoginForm() {
       duration: 2000,
     });
   };
-  const handleOnSubmit = () => {
+  const handleOnSubmit = (values: z.infer<typeof loginSchema>) => {
     toast({
       title: "Login",
       description: "Successful, redirecting...",
       duration: 2000,
     });
-    router.push("/dashboard");
+    // router.push("/dashboard");
   };
+
+  const loginSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(8),
+  });
+
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "ricardo@email.com",
+      password: "Admin123",
+    },
+  });
+
   return (
     <div className="max-h-screen w-full lg:grid lg:min-h-[600px] lg:grid-cols-2">
       <div className="flex items-center justify-center py-12">
@@ -38,35 +56,37 @@ export function LoginForm() {
             </p>
           </div>
           <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="you@mail.com"
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  href="/forgot-password"
-                  className="ml-auto inline-block text-sm underline"
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleOnSubmit)}>
+                <div className="grid gap-2">
+                  <FormField />
+                </div>
+                <div className="grid gap-2">
+                  <div className="flex items-center">
+                    <Label htmlFor="password">Password</Label>
+                    <Link
+                      href="/forgot-password"
+                      className="ml-auto inline-block text-sm underline"
+                    >
+                      Forgot your password?
+                    </Link>
+                  </div>
+                  <Input
+                    id="password"
+                    type="password"
+                    required
+                    placeholder="••••••••"
+                  />
+                </div>
+                <Button
+                  onClick={handleOnSubmit}
+                  type="submit"
+                  className="w-full"
                 >
-                  Forgot your password?
-                </Link>
-              </div>
-              <Input
-                id="password"
-                type="password"
-                required
-                placeholder="••••••••"
-              />
-            </div>
-            <Button onClick={handleOnSubmit} type="submit" className="w-full">
-              Login
-            </Button>
+                  Login
+                </Button>
+              </form>
+            </Form>
             <Button
               onClick={handleOnGoogle}
               variant="outline"
@@ -86,7 +106,7 @@ export function LoginForm() {
       <div className="hidden bg-muted lg:block">
         <Image
           src="/login-background.webp"
-          alt="Image"
+          alt="Background"
           width="1280"
           height="720"
           priority
