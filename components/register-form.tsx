@@ -23,10 +23,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-export function LoginForm() {
+export function RegisterForm() {
   const router = useRouter();
 
   const formSchema = z.object({
+    name: z.string().min(3),
+    lastName: z.string().min(3),
     email: z.string().email({
       message: "Invalid email address",
     }),
@@ -38,16 +40,12 @@ export function LoginForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "Ricardo",
+      lastName: "Corrales",
       email: "ricardo@gmail.com",
       password: "12345678",
     },
   });
-  const handleOnGoogle = () => {
-    toast.error("Google login is not available yet.", {
-      position: "top-right",
-      richColors: true,
-    });
-  };
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     toast.success(
       <div>
@@ -65,6 +63,35 @@ export function LoginForm() {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-8">
+          {/* Name */}
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input type="text" placeholder="Your name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          {/* Last name */}
+          <FormField
+            control={form.control}
+            name="lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Last name</FormLabel>
+                <FormControl>
+                  <Input type="text" placeholder="Your last name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          {/* Email */}
           <FormField
             control={form.control}
             name="email"
@@ -78,6 +105,7 @@ export function LoginForm() {
               </FormItem>
             )}
           />
+          {/* Password */}
           <FormField
             control={form.control}
             name="password"
@@ -91,22 +119,13 @@ export function LoginForm() {
               </FormItem>
             )}
           />
-          <Link
-            href="/forgot-password"
-            className="ml-auto inline-block text-sm underline"
-          >
-            Forgot your password?
-          </Link>
           <div className="grid gap-4">
             <Button type="submit" className="w-full">
-              Login
+              Register
             </Button>
           </div>
         </form>
       </Form>
-      <Button onClick={handleOnGoogle} variant="outline" className="w-full">
-        Login with Google
-      </Button>
     </>
   );
 }

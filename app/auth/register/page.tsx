@@ -1,6 +1,6 @@
 "use client";
 
-import { LoginForm } from "@/components/login-form";
+import { RegisterForm } from "@/components/register-form";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,13 +12,13 @@ export default function Home() {
           <div className="mx-auto grid max-w-[320px] gap-6 lg:max-w-max">
             <div className="grid gap-2 text-center">
               <h1 className="text-3xl font-bold">
-                Login to Litoral Restaurant
+                Register to Litoral Restaurant
               </h1>
               <p className="text-balance text-muted-foreground">
-                Enter your email below to login to your account
+                Enter your data below to create your account
               </p>
             </div>
-            <LoginForm />
+            <RegisterForm />
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
               <Link href="#" className="underline">
