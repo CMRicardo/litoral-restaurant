@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,7 +10,6 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
 import {
   Form,
   FormControl,
@@ -24,8 +21,6 @@ import {
 } from "@/components/ui/form";
 
 export function RegisterForm() {
-  const router = useRouter();
-
   const formSchema = z.object({
     name: z.string().min(3),
     lastName: z.string().min(3),
@@ -40,24 +35,22 @@ export function RegisterForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "Ricardo",
-      lastName: "Corrales",
-      email: "ricardo@gmail.com",
-      password: "12345678",
+      name: "",
+      lastName: "",
+      email: "",
+      password: "",
     },
   });
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     toast.success(
       <div>
-        <span className="text-lg font-bold">Login successful</span>
+        <span className="text-lg font-bold">Account created</span>
         <pre>{JSON.stringify(values, undefined, 2)}</pre>
       </div>,
       {
-        // richColors: true,
         position: "top-right",
       },
     );
-    router.push("/dashboard");
   };
   return (
     <>

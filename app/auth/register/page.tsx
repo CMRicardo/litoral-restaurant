@@ -1,8 +1,9 @@
 "use client";
 
-import { RegisterForm } from "@/components/register-form";
 import Image from "next/image";
 import Link from "next/link";
+
+import { RegisterForm } from "@/components/register-form";
 
 export default function Home() {
   return (
@@ -20,9 +21,9 @@ export default function Home() {
             </div>
             <RegisterForm />
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <Link href="#" className="underline">
-                Sign up
+              Already have an account?{" "}
+              <Link href="/" className="underline">
+                Go to Login
               </Link>
             </div>
           </div>
