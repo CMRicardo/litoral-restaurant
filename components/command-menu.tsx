@@ -1,4 +1,5 @@
 "use client";
+
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -27,9 +28,9 @@ export function CommandMenu() {
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (
-        (e.metaKey || e.ctrlKey) &&
-        e.shiftKey &&
-        (e.key === "k" || e.key === "K")
+        e.ctrlKey &&
+        // e.shiftKey &&
+        e.key === "k"
       ) {
         e.preventDefault();
         setOpen((open) => !open);
