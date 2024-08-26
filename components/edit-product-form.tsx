@@ -1,0 +1,218 @@
+"use client";
+
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { ChevronLeft } from "lucide-react";
+import { Badge } from "./ui/badge";
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "./ui/alert-dialog";
+import { Label } from "./ui/label";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "./ui/select";
+import { ProductImage } from "./product-image";
+import { AlertDialogHeader, AlertDialogFooter } from "./ui/alert-dialog";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "./ui/card";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import type { Product } from "@/interfaces/product.interface";
+import type { Category } from "@/interfaces/category.interface";
+
+const POSSIBLE_STATUSES = ["Active", "Inactive"];
+
+export const EditProductForm = ({
+  product,
+  categories,
+}: {
+  product: Product;
+  categories: Category[];
+}) => {
+  const { name, active, id, description, price, category, pictureUrl } =
+    product;
+
+  const status = active ? "Active" : "Inactive";
+  return (
+    <>
+      <div className="flex items-center gap-4">
+        <Link href="/dashboard/products">
+          <Button variant="outline" size="icon" className="h-7 w-7">
+            <ChevronLeft className="h-4 w-4" />
+            <span className="sr-only">Back</span>
+          </Button>
+        </Link>
+        <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
+          {name}
+        </h1>
+        <Badge
+          variant={status === "Inactive" ? "outline" : "default"}
+          className="ml-auto sm:ml-0"
+        >
+          {status}
+        </Badge>
+        <div className="hidden items-center gap-2 md:ml-auto md:flex">
+          <Button variant="outline" size="sm">
+            Discard
+          </Button>
+          <Button size="sm">Save Product</Button>
+        </div>
+      </div>
+      <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
+        <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Product Details</CardTitle>
+              <CardDescription>
+                Edit details of the {name} product
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-6">
+                <div className="grid gap-3">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    className="w-full"
+                    defaultValue={name}
+                  />
+                </div>
+                <div className="grid gap-3">
+                  <Label htmlFor="description">Description</Label>
+                  <Textarea
+                    id="description"
+                    defaultValue={description}
+                    className="min-h-32"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Product Info</CardTitle>
+              <CardDescription>
+                What category is this product in?
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="grid gap-3">
+                  <Label htmlFor="category">Category</Label>
+                  <Select>
+                    <SelectTrigger id="category" aria-label="Select category">
+                      <SelectValue
+                        placeholder={category}
+                        defaultValue={category}
+                      />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categories.map((category) => (
+                        <SelectItem
+                          key={category.id}
+                          value={String(category.id)}
+                        >
+                          {category.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="grid gap-3">
+                  <Label htmlFor="status">Status</Label>
+                  <Select>
+                    <SelectTrigger id="status" aria-label="Select status">
+                      <SelectValue placeholder={status} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {POSSIBLE_STATUSES.map((status) => (
+                        <SelectItem
+                          key={status}
+                          value={status}
+                          className="capitalize"
+                        >
+                          {status}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Price</CardTitle>
+              <CardDescription>Edit the price of the product</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-6">
+                <Label className="sr-only" htmlFor="price">
+                  Price
+                </Label>
+                <Input id="price" type="number" defaultValue={price} />
+              </div>
+            </CardContent>
+          </Card>
+          <ProductImage product={product} />
+          <Card>
+            <CardHeader>
+              <CardTitle>Archive Product</CardTitle>
+              <CardDescription>
+                Archiving a product removes it from the menu and the dashboard
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <AlertDialog>
+                <AlertDialogTrigger>
+                  <Button size="sm" variant="destructive">
+                    Archive Product
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Are you absolutely sure?
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. This will remove{" "}
+                      <strong>{name}</strong> from the menu.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction>Continue</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+      <div className="flex items-center justify-center gap-2 md:hidden">
+        <Button variant="outline" size="sm">
+          Discard
+        </Button>
+        <Button size="sm">Save Product</Button>
+      </div>
+    </>
+  );
+};
