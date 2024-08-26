@@ -43,10 +43,7 @@ export function LoginForm() {
     },
   });
   const handleOnGoogle = () => {
-    toast.error("Google login is not available yet.", {
-      position: "top-right",
-      richColors: true,
-    });
+    toast.error("Google login is not available yet.");
   };
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     toast.success(
@@ -54,10 +51,6 @@ export function LoginForm() {
         <span className="text-lg font-bold">Login successful</span>
         <pre>{JSON.stringify(values, undefined, 2)}</pre>
       </div>,
-      {
-        // richColors: true,
-        position: "top-right",
-      },
     );
     router.push("/dashboard");
   };

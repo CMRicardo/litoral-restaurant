@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
-import { LoadingSpinner } from "./ui/LoadingSpinner";
+import { LoadingSpinner } from "./ui/loading-spinner";
 
 export const DropzoneUpload = () => {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
