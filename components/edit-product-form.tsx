@@ -13,7 +13,7 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "./ui/alert-dialog";
-import { Label } from "./ui/label";
+
 import {
   Select,
   SelectTrigger,
@@ -21,6 +21,7 @@ import {
   SelectContent,
   SelectItem,
 } from "./ui/select";
+
 import { ProductImage } from "./product-image";
 import { AlertDialogHeader, AlertDialogFooter } from "./ui/alert-dialog";
 import {
@@ -30,6 +31,7 @@ import {
   CardDescription,
   CardContent,
 } from "./ui/card";
+
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import type { Product } from "@/interfaces/product.interface";
@@ -37,6 +39,7 @@ import type { Category } from "@/interfaces/category.interface";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+
 import {
   Form,
   FormControl,
@@ -45,31 +48,11 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
+
 import { toast } from "sonner";
+import { productFormSchema } from "@/schemas/product-form.schema";
 
 const POSSIBLE_STATUSES = ["Active", "Inactive"];
-
-const formSchema = z.object({
-  name: z
-    .string()
-    .min(3, { message: "Name must be at least 3 characters long" })
-    .max(100, { message: "Name must be at most 100 characters long" }),
-  description: z
-    .string()
-    .min(3, {
-      message: "Description must be at least 3 characters long",
-    })
-    .max(255, { message: "Description must be at most 255 characters long" }),
-  category: z.enum(["Desserts", "Entries", "Main dishes", "Drinks"], {
-    required_error: "Please select a category",
-  }),
-  status: z.enum(["Active", "Inactive"], {
-    required_error: "Please select a status",
-  }),
-  price: z.coerce
-    .number()
-    .min(1, { message: "Price must be equal or greater than 1" }),
-});
 
 export const EditProductForm = ({
   product,
@@ -82,8 +65,8 @@ export const EditProductForm = ({
     product;
   const status = active ? "Active" : "Inactive";
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof productFormSchema>>({
+    resolver: zodResolver(productFormSchema),
     defaultValues: {
       name,
       description,
@@ -93,7 +76,7 @@ export const EditProductForm = ({
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof productFormSchema>) => {
     toast.success(
       <div>
         <span>Product created successfully!</span>
