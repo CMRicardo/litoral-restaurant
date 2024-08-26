@@ -12,18 +12,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -53,11 +41,25 @@ import { Category } from "@/interfaces/category.interface";
 export const NewProductForm = ({ categories }: { categories: Category[] }) => {
   const POSSIBLE_STATUSES = ["Active", "Inactive"];
   const formSchema = z.object({
-    name: z.string().min(3).max(255),
-    description: z.string().min(3).max(255),
-    category: z.enum(["Desserts", "Entries", "Main dishes", "Drinks"]),
-    status: z.enum(["Active", "Inactive"]),
-    price: z.coerce.number().min(1),
+    name: z
+      .string()
+      .min(3, { message: "Name must be at least 3 characters long" })
+      .max(100, { message: "Name must be at most 100 characters long" }),
+    description: z
+      .string()
+      .min(3, {
+        message: "Description must be at least 3 characters long",
+      })
+      .max(255, { message: "Description must be at most 255 characters long" }),
+    category: z.enum(["Desserts", "Entries", "Main dishes", "Drinks"], {
+      required_error: "Please select a category",
+    }),
+    status: z.enum(["Active", "Inactive"], {
+      required_error: "Please select a status",
+    }),
+    price: z.coerce
+      .number()
+      .min(1, { message: "Price must be equal or greater than 1" }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
