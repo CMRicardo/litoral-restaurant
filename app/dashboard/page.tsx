@@ -1,3 +1,4 @@
+import { MainChart } from "@/components/main-chart";
 import {
   Card,
   CardContent,
@@ -43,6 +44,7 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </div>
+        <MainChart />
       </div>
     </>
   );
