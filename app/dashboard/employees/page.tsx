@@ -30,11 +30,11 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { ListFilter, PlusCircle, MoreHorizontal, File } from "lucide-react";
+import { ListFilter, MoreHorizontal, File } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { Metadata } from "next";
-import Link from "next/link";
+import { NewEmployeeForm } from "@/components/new-employee-form";
 
 export const metadata: Metadata = {
   title: "Employees | Litoral Restaurant",
@@ -80,14 +80,8 @@ export default function Employees() {
                 Export
               </span>
             </Button>
-            <Link href="/dashboard/employees/new">
-              <Button size="sm" className="h-7 gap-1">
-                <PlusCircle className="h-3.5 w-3.5" />
-                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Add Employee
-                </span>
-              </Button>
-            </Link>
+
+            <NewEmployeeForm />
           </div>
         </div>
         <TabsContent value="all">
