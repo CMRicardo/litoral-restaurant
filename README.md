@@ -8,6 +8,28 @@ This project was made to practice **NextJS** and to try **Shadcn** components.
 - TailwindCSS
 - TypeScript
 
+## Images
+
+### Login
+
+![Login Page](images/Login.png)
+
+### Dashboard
+
+![Dashboard](images/Dashboard.png)
+
+### Orders
+
+![Orders](images/Orders.png)
+
+### Products
+
+![Products](images/Products.png)
+
+### Command bar
+
+![Command Bar](images/Command-bar.png)
+
 ## Getting Started
 
 - Install dependencies
