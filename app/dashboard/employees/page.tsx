@@ -34,6 +34,7 @@ import { ListFilter, PlusCircle, MoreHorizontal, File } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Employees | Litoral Restaurant",
@@ -79,12 +80,14 @@ export default function Employees() {
                 Export
               </span>
             </Button>
-            <Button size="sm" className="h-7 gap-1">
-              <PlusCircle className="h-3.5 w-3.5" />
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                Add Employee
-              </span>
-            </Button>
+            <Link href="/dashboard/employees/new">
+              <Button size="sm" className="h-7 gap-1">
+                <PlusCircle className="h-3.5 w-3.5" />
+                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                  Add Employee
+                </span>
+              </Button>
+            </Link>
           </div>
         </div>
         <TabsContent value="all">
